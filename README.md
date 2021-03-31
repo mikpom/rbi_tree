@@ -18,11 +18,13 @@ Example usage:
 [(20, 40, None)]
 >>> t.find(40, 60) # half open so it gives nothing
 []
+>>> t.find(40, 61)
+[(60, 80, {'a': 'b'})]
 ```
 
 
-Class ``rbi_tree.tree.ITreed`` support interval deletion. This is done via
-value assigned automatically and serving as IDs of the intervals.
+Class ``rbi_tree.tree.ITreed`` supports interval deletion. This is done via
+values assigned automatically and serving as IDs for intervals.
 
 ```python
 >>> from rbi_tree.tree import ITreed
@@ -35,9 +37,8 @@ value assigned automatically and serving as IDs of the intervals.
 1
 ```
 
-``Id``s are automatically generated and are incrementing integers
-starting from zero reflecting number of insertion events.
-These ``id``s are returned by ``find`` method.
+``Id``s are incrementing integers starting from zero reflecting number
+of insertion events.
     
 ```python
 >>> t.find(10, 30)
@@ -51,7 +52,7 @@ Ids of intervals can be used to remove them:
 >>> t.find(10, 30) # now it finds nothing
 []
 >>> t.find_at(70) # search at point
-[0]
+[(60, 80, 0)]
 >>> list(t.iter_ivl())
 [(60, 80, 0)]
 ```

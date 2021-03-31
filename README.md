@@ -12,6 +12,21 @@ Example usage:
 ```python
 >>> from rbi_tree.tree import ITree
 >>> t = ITree()
+>>> t.insert(60, 80, value={'a':'b'}) # start stop are integers
+>>> t.insert(20, 40)
+>>> t.find(10, 30)
+[(20, 40, None)]
+>>> t.find(40, 60) # half open so it gives nothing
+[]
+```
+
+
+Class ``rbi_tree.tree.ITreed`` support interval deletion. This is done via
+value assigned automatically and serving as IDs of the intervals.
+
+```python
+>>> from rbi_tree.tree import ITreed
+>>> t = ITreed()
 >>> id1 = t.insert(60, 80) # start stop are integers
 >>> id1
 0
@@ -19,21 +34,17 @@ Example usage:
 >>> id2
 1
 ```
-    
+
 ``Id``s are automatically generated and are incrementing integers
 starting from zero reflecting number of insertion events.
 These ``id``s are returned by ``find`` method.
     
 ```python
 >>> t.find(10, 30)
-[1]
->>> t.get_ivl(1) # get interval by id
-[20, 40]
->>> t.find(40, 50) # half open so it should give nothing
-[]
+[(20, 40, 0)]
 ```
     
-``Id``s of intervals can be used to remove them:
+Ids of intervals can be used to remove them:
 
 ```python
 >>> t.remove(1)

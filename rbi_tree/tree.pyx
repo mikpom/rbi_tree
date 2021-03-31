@@ -1,4 +1,4 @@
-# Copyright 2020 Mikhail Pomaznoy
+# Copyright 2020-2021 Mikhail Pomaznoy
 # 
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -26,7 +26,7 @@ from cython.operator cimport dereference as deref, preincrement as inc, address
 from libcpp.vector cimport vector
 from libcpp.map cimport map
 from libcpp.utility cimport pair
-from cpython.ref cimport PyObject
+from cpython.ref cimport PyObject, Py_INCREF, Py_DECREF 
 
 cdef extern from "intervaltree.hpp" namespace "Intervals":
     cdef cppclass Interval[T1,T2]:
@@ -60,6 +60,11 @@ cdef class ITree:
         self.tree = new CTreeObj()
 
     def __dealloc__(self):
+        cdef vector[CIntervalObj] intervals = self.tree.intervals()
+        cdef vector[CIntervalObj].iterator it = intervals.begin()
+        while it != intervals.end():
+            Py_DECREF(<object>deref(it).value)
+            inc(it)
         del self.tree
 
     def __reduce__(self):
@@ -69,9 +74,11 @@ cdef class ITree:
     def insert(self, start, end, value=None):
         """Insert an interval [start, end) and returns an id
         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
-        cdef PyObject* ptr = <PyObject*>value
-        cdef CIntervalObj* ivl = new CIntervalObj(start, end, ptr)
+        
+        cdef CIntervalObj* ivl = new CIntervalObj(
+            start, end, <PyObject*>value)
         self.tree.insert(deref(ivl))
+        Py_INCREF(value)
         return
 
     def find(self, int start, int end):

@@ -12,7 +12,7 @@
         "language": "c++",
         "name": "rbi_tree.tree",
         "sources": [
-            "/home/mikpom/Dropbox/src/python/lib/rbi_tree/rbi_tree/tree.pyx"
+            "/home/mikpom/ownCloud/src/python/lib/rbi_tree/rbi_tree/tree.pyx"
         ]
     },
     "module_name": "rbi_tree.tree"
@@ -2920,7 +2920,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_14find_at(struct __pyx_obj_8rbi
  *         while it != out.end():
  *             if not deref(it).high == point:             # <<<<<<<<<<<<<<
  *                 val = <object>deref(it).value
- *                 a.append(a.append( (deref(it).low, deref(it).high, val) ))
+ *                 a.append( (deref(it).low, deref(it).high, val) )
  */
     __pyx_t_2 = ((!(((*__pyx_v_it).high == __pyx_v_point) != 0)) != 0);
     if (__pyx_t_2) {
@@ -2929,7 +2929,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_14find_at(struct __pyx_obj_8rbi
  *         while it != out.end():
  *             if not deref(it).high == point:
  *                 val = <object>deref(it).value             # <<<<<<<<<<<<<<
- *                 a.append(a.append( (deref(it).low, deref(it).high, val) ))
+ *                 a.append( (deref(it).low, deref(it).high, val) )
  *             inc(it)
  */
       __pyx_t_3 = (*__pyx_v_it).value;
@@ -2941,7 +2941,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_14find_at(struct __pyx_obj_8rbi
       /* "rbi_tree/tree.pyx":134
  *             if not deref(it).high == point:
  *                 val = <object>deref(it).value
- *                 a.append(a.append( (deref(it).low, deref(it).high, val) ))             # <<<<<<<<<<<<<<
+ *                 a.append( (deref(it).low, deref(it).high, val) )             # <<<<<<<<<<<<<<
  *             inc(it)
  *         return a
  */
@@ -2962,23 +2962,19 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_14find_at(struct __pyx_obj_8rbi
       __pyx_t_4 = 0;
       __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_Owned_Py_None(__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 134, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
       /* "rbi_tree/tree.pyx":132
  *         cdef vector[CIntervalObj].iterator it = out.begin()
  *         while it != out.end():
  *             if not deref(it).high == point:             # <<<<<<<<<<<<<<
  *                 val = <object>deref(it).value
- *                 a.append(a.append( (deref(it).low, deref(it).high, val) ))
+ *                 a.append( (deref(it).low, deref(it).high, val) )
  */
     }
 
     /* "rbi_tree/tree.pyx":135
  *                 val = <object>deref(it).value
- *                 a.append(a.append( (deref(it).low, deref(it).high, val) ))
+ *                 a.append( (deref(it).low, deref(it).high, val) )
  *             inc(it)             # <<<<<<<<<<<<<<
  *         return a
  * 
@@ -2987,7 +2983,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_14find_at(struct __pyx_obj_8rbi
   }
 
   /* "rbi_tree/tree.pyx":136
- *                 a.append(a.append( (deref(it).low, deref(it).high, val) ))
+ *                 a.append( (deref(it).low, deref(it).high, val) )
  *             inc(it)
  *         return a             # <<<<<<<<<<<<<<
  * 

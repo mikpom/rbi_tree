@@ -37,7 +37,7 @@ values assigned automatically and serving as IDs for intervals.
 1
 ```
 
-``Id``s are incrementing integers starting from zero reflecting number
+Ids are incrementing integers starting from zero reflecting number
 of insertion events.
     
 ```python

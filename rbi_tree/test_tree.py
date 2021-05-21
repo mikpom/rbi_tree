@@ -2,6 +2,7 @@ from unittest import TestCase
 import unittest
 import io
 import pickle
+import rbi_tree.tree
 from rbi_tree.tree import ITree, ITreed
 
 class TestObjectTreeCase(TestCase):
@@ -40,6 +41,14 @@ class TestObjectTreeCase(TestCase):
         s.seek(0)
         t3 = pickle.load(s)
         self.assertEqual(len(list(t3.iter_ivl())), 10)
+
+    def test_find_at(self):
+        t = ITree()
+        for i, int in enumerate([(1,3),(5,9),(6,10)]):
+            t.insert(*int, i)
+        res = t.find_at(2)
+        self.assertEqual(len(res), 1)
+        self.assertEqual(res[0], (1,3,0))
 
 class TestTreeCase(TestCase):
     def test_tree(self):

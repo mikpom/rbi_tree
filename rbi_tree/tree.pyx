@@ -131,7 +131,7 @@ cdef class ITree:
         while it != out.end():
             if not deref(it).high == point:
                 val = <object>deref(it).value
-                a.append(a.append( (deref(it).low, deref(it).high, val) ))
+                a.append( (deref(it).low, deref(it).high, val) )
             inc(it)
         return a
 

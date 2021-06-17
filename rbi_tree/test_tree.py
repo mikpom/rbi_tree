@@ -1,12 +1,21 @@
+import os
+import sys
+import copy
 from unittest import TestCase
 import unittest
 import io
 import pickle
 import rbi_tree.tree
 from rbi_tree.tree import ITree, ITreed
+import gc
 
-class TestObjectTreeCase(TestCase):
-    def test(self):
+class CustomClass(object):
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+class TestTreeCase(TestCase):
+    def test_simple(self):
         for value in ['abc', 100, {0:1}, list('abc')]:
              t = ITree()
              i1 = t.insert(60, 80)
@@ -22,25 +31,50 @@ class TestObjectTreeCase(TestCase):
         for pos in reversed(range(10)):
             num = t.insert(pos, pos+1)
 
-        starts,ends,ids = list(zip(*t.iter_ivl()))
+        starts, ends, ids = list(zip(*t.iter_ivl()))
         self.assertEqual(starts, tuple(range(10)))
         self.assertEqual(ends, tuple([i+1 for i in range(10)]))
 
+
+    def test_leak(self):
+        trees = []
+        for tren in range(10):
+            t = ITree()
+            for pos in range(100):
+                t.insert(pos, pos+1, CustomClass(tren+1, pos))
+            trees.append(t)
+            gc.collect()
+        for t in trees:
+            for s,e,v in t.iter_ivl():
+                self.assertGreater(v.a, 0)
+                
+
+    def test_pickling(self):
+        # Test for bug in https://github.com/mikpom/rbi_tree/issues/4
+        t = ITree()
+        for pos in range(100):
+            num = t.insert(pos, pos+1)
+
+        s = io.BytesIO()
+        pickle.dump(t, s)
+
+        for i in range(100):
+            t3 = pickle.loads(s.getvalue())
+            del t3
+            gc.collect()
+
+        t3 = pickle.loads(s.getvalue())
+        self.assertEqual(len(list(t3.iter_ivl())), 100)
+        
     def test_copy(self):
         t = ITree()
         for pos in range(10):
             num = t.insert(pos, pos+1)
 
-        t2 = t.copy()
+        t2 = copy.copy(t)
         starts,ends,ids = list(zip(*t2.iter_ivl()))
         self.assertEqual(starts, tuple(range(10)))
         self.assertEqual(ends, tuple([i+1 for i in range(10)]))
-
-        s = io.BytesIO()
-        pickle.dump(t, s)
-        s.seek(0)
-        t3 = pickle.load(s)
-        self.assertEqual(len(list(t3.iter_ivl())), 10)
 
     def test_find_at(self):
         t = ITree()
@@ -50,8 +84,18 @@ class TestObjectTreeCase(TestCase):
         self.assertEqual(len(res), 1)
         self.assertEqual(res[0], (1,3,0))
 
-class TestTreeCase(TestCase):
-    def test_tree(self):
+class TestTreedCase(TestCase):
+    def test_copy(self):
+        t = ITreed()
+        for pos in range(10):
+            num = t.insert(pos, pos+1)
+
+        t2 = copy.copy(t)
+        starts,ends,ids = list(zip(*t2.iter_ivl()))
+        self.assertEqual(starts, tuple(range(10)))
+        self.assertEqual(ends, tuple([i+1 for i in range(10)]))
+    
+    def test_tree_with_deletion(self):
         t = ITreed()
         i1 = t.insert(60,80)
         i2 = t.insert(20,40)

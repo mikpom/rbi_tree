@@ -26,7 +26,7 @@ from cython.operator cimport dereference as deref, preincrement as inc, address
 from libcpp.vector cimport vector
 from libcpp.map cimport map
 from libcpp.utility cimport pair
-from cpython.ref cimport PyObject, Py_INCREF, Py_DECREF 
+from cpython.ref cimport PyObject, Py_INCREF, Py_DECREF
 
 cdef extern from "intervaltree.hpp" namespace "Intervals":
     cdef cppclass Interval[T1,T2]:
@@ -37,11 +37,13 @@ cdef extern from "intervaltree.hpp" namespace "Intervals":
         T2 value
     cdef cppclass IntervalTree[T1,T2]:
         IntervalTree()
+        void clear()
         IntervalTree[T1,T2] IntervalTree(IntervalTree[T1,T2] other)
         bint insert(Interval&& interval)
         void findOverlappingIntervals(Interval iterval, vector[Interval] out)
         void findIntervalsContainPoint(int point, vector[Interval] out)
         vector[Interval[T1,T2]] intervals()
+        IntervalTree[T1,T2] IntervalTree(vector[Interval[T1,T2]] ivls)
         bint remove(Interval interval)
         
 
@@ -62,9 +64,13 @@ cdef class ITree:
     def __dealloc__(self):
         cdef vector[CIntervalObj] intervals = self.tree.intervals()
         cdef vector[CIntervalObj].iterator it = intervals.begin()
+        
         while it != intervals.end():
-            Py_DECREF(<object>deref(it).value)
+            val  = <object>(deref(it).value)
+            if not val is None:
+                Py_DECREF(val)
             inc(it)
+
         del self.tree
 
     def __reduce__(self):
@@ -78,7 +84,10 @@ cdef class ITree:
         cdef CIntervalObj* ivl = new CIntervalObj(
             start, end, <PyObject*>value)
         self.tree.insert(deref(ivl))
-        Py_INCREF(value)
+        val = <object>value
+        if not val is None:
+            Py_INCREF(val)
+        del ivl
         return
 
     def find(self, int start, int end):
@@ -98,29 +107,14 @@ cdef class ITree:
             inc(it)
         return a
 
-    def _from_intervals(cls, intervals=None, tot=0):
-        cdef CTreeObj* tree = new CTreeObj()
-        tot = 0
-        cdef CIntervalObj* ivl
-        cdef PyObject* _val
+    def _from_intervals(cls, intervals=None):
+        tree = cls()
         if not intervals is None:
             for start, end, val in intervals:
-                _val = <PyObject*>val
-                ivl = new CIntervalObj(start, end, _val)
-                tree.insert(deref(ivl))
-        return ITree._from_data(tree)
+                tree.insert(start, end, val)
+        return tree
     _from_intervals = classmethod(_from_intervals)
 
-    @staticmethod
-    cdef ITree _from_data(CTreeObj* tree):
-        cdef ITree itree = ITree.__new__(ITree)
-        itree.tree[0] = CTreeObj(deref(tree))
-        return itree
-
-    def copy(self):
-        """Create a copy of Interval tree."""
-        return ITree._from_data(self.tree)
-        
     def find_at(self, int point):
         """Search for intervals containing specified point. Returns list of 
         overlapping intervals' ids."""
@@ -144,7 +138,7 @@ cdef class ITree:
             yield (deref(it).low, deref(it).high, val)
             inc(it)
 
-cdef class ITreed:
+cdef class ITreed():
     cdef CTreeInt* tree
     cdef Ivlmap ivldata
     cdef map[int, CIntervalInt*].iterator datapos
@@ -156,6 +150,10 @@ cdef class ITreed:
         self.datapos = self.ivldata.begin()
         self.tot = 0
 
+    def __init__(self, tot=None):
+        if not tot is None:
+            self.tot = tot
+
     def __dealloc__(self):
         del self.tree
 
@@ -164,41 +162,26 @@ cdef class ITreed:
         return (ITreed._from_intervals, (intervals, self.tot))
 
     def _from_intervals(cls, intervals=None, tot=0):
-        cdef CTreeInt* tree = new CTreeInt()
-        cdef Ivlmap ivldata = Ivlmap()
-        tot = 0
-        cdef CIntervalInt* ivl
-        datapos = ivldata.begin()
+        tree = cls(tot)
         if not intervals is None:
             for start, end, val in intervals:
-                ivl = new CIntervalInt(start, end, val)
-                tree.insert(deref(ivl))
-                datapos = ivldata.insert(datapos,
-                                    keyval(ivl.value, ivl))
-                tot = tot
-        return ITreed._from_data(tree, ivldata, tot)
+                tree._insert(start, end, val)
+
+        return tree
     _from_intervals = classmethod(_from_intervals)
 
-    @staticmethod
-    cdef ITreed _from_data(CTreeInt* tree, Ivlmap& ivldata, int tot):
-        cdef ITreed itree = ITreed.__new__(ITreed)
-        itree.tree[0] = CTreeInt(deref(tree))
-        itree.ivldata = ivldata
-        itree.tot = tot
-        return itree
 
-    def copy(self):
-        """Create a copy of Interval tree."""
-        return ITreed._from_data(self.tree, self.ivldata, self.tot)
+    def _insert(self, start, end, value):
+        cdef CIntervalInt* ivl = new CIntervalInt(start, end, value)
+        self.tree.insert(deref(ivl))
+        self.datapos = self.ivldata.insert(self.datapos,
+                            keyval(ivl.value, ivl))
         
     def insert(self, start, end):
         """Insert an interval [start, end) and returns an id
         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
         cdef int ivl_id = self.tot
-        cdef CIntervalInt* ivl = new CIntervalInt(start, end, ivl_id)
-        self.tree.insert(deref(ivl))
-        self.datapos = self.ivldata.insert(self.datapos,
-                            keyval(ivl.value, ivl))
+        self._insert(start, end, ivl_id)
         self.tot += 1
         return ivl_id
 

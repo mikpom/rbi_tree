@@ -22,6 +22,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 
 # distutils: language = c++
+# distutils: extra_compile_args = -std=c++11
 from cython.operator cimport dereference as deref, preincrement as inc, address
 from libcpp.vector cimport vector
 from libcpp.map cimport map
@@ -141,7 +142,7 @@ cdef class ITree:
 cdef class ITreed():
     cdef CTreeInt* tree
     cdef Ivlmap ivldata
-    cdef map[int, CIntervalInt*].iterator datapos
+    cdef map[int, CIntervalInt*].const_iterator datapos
     cdef tot
 
     def __cinit__(self):

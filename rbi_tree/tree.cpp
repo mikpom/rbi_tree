@@ -1475,12 +1475,12 @@ struct __pyx_obj_8rbi_tree_4tree_ITree {
 };
 
 
-/* "rbi_tree/tree.pyx":142
+/* "rbi_tree/tree.pyx":141
  *             inc(it)
  * 
  * cdef class ITreed():             # <<<<<<<<<<<<<<
- *     cdef CTreeInt* tree
- *     cdef Ivlmap ivldata
+ *     """Version of ITree supporting deletion
+ *     """
  */
 struct __pyx_obj_8rbi_tree_4tree_ITreed {
   PyObject_HEAD
@@ -1492,7 +1492,7 @@ struct __pyx_obj_8rbi_tree_4tree_ITreed {
 };
 
 
-/* "rbi_tree/tree.pyx":133
+/* "rbi_tree/tree.pyx":132
  *         return a
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
@@ -1508,7 +1508,7 @@ struct __pyx_obj_8rbi_tree_4tree___pyx_scope_struct__iter_ivl {
 };
 
 
-/* "rbi_tree/tree.pyx":240
+/* "rbi_tree/tree.pyx":241
  *         del ivl
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
@@ -1524,12 +1524,12 @@ struct __pyx_obj_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl {
 
 
 
-/* "rbi_tree/tree.pyx":142
+/* "rbi_tree/tree.pyx":141
  *             inc(it)
  * 
  * cdef class ITreed():             # <<<<<<<<<<<<<<
- *     cdef CTreeInt* tree
- *     cdef Ivlmap ivldata
+ *     """Version of ITree supporting deletion
+ *     """
  */
 
 struct __pyx_vtabstruct_8rbi_tree_4tree_ITreed {
@@ -3351,8 +3351,8 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_4__reduce__(struct __pyx_obj_8r
  *         return (ITree._from_intervals, (intervals,))
  * 
  *     def insert(self, start, end, value=None):             # <<<<<<<<<<<<<<
- *         """Insert an interval [start, end) and returns an id
- *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
+ *         """Insert an interval [start, end) """
+ * 
  */
 
 /* Python wrapper */
@@ -3363,7 +3363,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-PyDoc_STRVAR(__pyx_doc_8rbi_tree_4tree_5ITree_6insert, "Insert an interval [start, end) and returns an id\n        of the interval. Ids are incrementing integers, i.e. 0,1,2 etc.");
+PyDoc_STRVAR(__pyx_doc_8rbi_tree_4tree_5ITree_6insert, "Insert an interval [start, end) ");
 static PyMethodDef __pyx_mdef_8rbi_tree_4tree_5ITree_7insert = {"insert", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8rbi_tree_4tree_5ITree_7insert, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_8rbi_tree_4tree_5ITree_6insert};
 static PyObject *__pyx_pw_8rbi_tree_4tree_5ITree_7insert(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
@@ -3469,18 +3469,18 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert", 0);
 
-  /* "rbi_tree/tree.pyx":86
+  /* "rbi_tree/tree.pyx":85
  * 
  *         cdef CIntervalObj* ivl = new CIntervalObj(
  *             start, end, <PyObject*>value)             # <<<<<<<<<<<<<<
  *         self.tree.insert(deref(ivl))
  *         val = <object>value
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_start); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 86, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_end); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_start); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_end); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 85, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":85
- *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
+  /* "rbi_tree/tree.pyx":84
+ *         """Insert an interval [start, end) """
  * 
  *         cdef CIntervalObj* ivl = new CIntervalObj(             # <<<<<<<<<<<<<<
  *             start, end, <PyObject*>value)
@@ -3488,7 +3488,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
  */
   __pyx_v_ivl = new __pyx_t_8rbi_tree_4tree_CIntervalObj(__pyx_t_1, __pyx_t_2, ((PyObject *)__pyx_v_value));
 
-  /* "rbi_tree/tree.pyx":87
+  /* "rbi_tree/tree.pyx":86
  *         cdef CIntervalObj* ivl = new CIntervalObj(
  *             start, end, <PyObject*>value)
  *         self.tree.insert(deref(ivl))             # <<<<<<<<<<<<<<
@@ -3497,7 +3497,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
  */
   (void)(__pyx_v_self->tree->insert((*__pyx_v_ivl)));
 
-  /* "rbi_tree/tree.pyx":88
+  /* "rbi_tree/tree.pyx":87
  *             start, end, <PyObject*>value)
  *         self.tree.insert(deref(ivl))
  *         val = <object>value             # <<<<<<<<<<<<<<
@@ -3509,7 +3509,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
   __pyx_v_val = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "rbi_tree/tree.pyx":89
+  /* "rbi_tree/tree.pyx":88
  *         self.tree.insert(deref(ivl))
  *         val = <object>value
  *         if not val is None:             # <<<<<<<<<<<<<<
@@ -3519,7 +3519,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
   __pyx_t_4 = (__pyx_v_val != Py_None);
   if (__pyx_t_4) {
 
-    /* "rbi_tree/tree.pyx":90
+    /* "rbi_tree/tree.pyx":89
  *         val = <object>value
  *         if not val is None:
  *             Py_INCREF(val)             # <<<<<<<<<<<<<<
@@ -3528,7 +3528,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
  */
     Py_INCREF(__pyx_v_val);
 
-    /* "rbi_tree/tree.pyx":89
+    /* "rbi_tree/tree.pyx":88
  *         self.tree.insert(deref(ivl))
  *         val = <object>value
  *         if not val is None:             # <<<<<<<<<<<<<<
@@ -3537,7 +3537,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
  */
   }
 
-  /* "rbi_tree/tree.pyx":91
+  /* "rbi_tree/tree.pyx":90
  *         if not val is None:
  *             Py_INCREF(val)
  *         del ivl             # <<<<<<<<<<<<<<
@@ -3546,7 +3546,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
  */
   delete __pyx_v_ivl;
 
-  /* "rbi_tree/tree.pyx":92
+  /* "rbi_tree/tree.pyx":91
  *             Py_INCREF(val)
  *         del ivl
  *         return             # <<<<<<<<<<<<<<
@@ -3561,8 +3561,8 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
  *         return (ITree._from_intervals, (intervals,))
  * 
  *     def insert(self, start, end, value=None):             # <<<<<<<<<<<<<<
- *         """Insert an interval [start, end) and returns an id
- *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
+ *         """Insert an interval [start, end) """
+ * 
  */
 
   /* function exit code */
@@ -3577,7 +3577,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_6insert(struct __pyx_obj_8rbi_t
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":94
+/* "rbi_tree/tree.pyx":93
  *         return
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
@@ -3631,19 +3631,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_start)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 94, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 93, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_end)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 94, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 93, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, 1); __PYX_ERR(0, 94, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, 1); __PYX_ERR(0, 93, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find") < 0)) __PYX_ERR(0, 94, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find") < 0)) __PYX_ERR(0, 93, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -3651,12 +3651,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
     }
-    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 94, __pyx_L3_error)
-    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 94, __pyx_L3_error)
+    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 93, __pyx_L3_error)
+    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 93, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 94, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 93, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITree.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3689,7 +3689,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find", 0);
 
-  /* "rbi_tree/tree.pyx":97
+  /* "rbi_tree/tree.pyx":96
  *         """Search intervals overlapping [start, end). Returns list of
  *         overlapping intervals' ids."""
  *         cdef CIntervalObj* ivl = new CIntervalObj(start,end)             # <<<<<<<<<<<<<<
@@ -3698,7 +3698,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
  */
   __pyx_v_ivl = new __pyx_t_8rbi_tree_4tree_CIntervalObj(__pyx_v_start, __pyx_v_end);
 
-  /* "rbi_tree/tree.pyx":99
+  /* "rbi_tree/tree.pyx":98
  *         cdef CIntervalObj* ivl = new CIntervalObj(start,end)
  *         cdef vector[CIntervalObj] out
  *         self.tree.findOverlappingIntervals(deref(ivl), out)             # <<<<<<<<<<<<<<
@@ -3707,7 +3707,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
  */
   __pyx_v_self->tree->findOverlappingIntervals((*__pyx_v_ivl), __pyx_v_out);
 
-  /* "rbi_tree/tree.pyx":100
+  /* "rbi_tree/tree.pyx":99
  *         cdef vector[CIntervalObj] out
  *         self.tree.findOverlappingIntervals(deref(ivl), out)
  *         del ivl             # <<<<<<<<<<<<<<
@@ -3716,19 +3716,19 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
  */
   delete __pyx_v_ivl;
 
-  /* "rbi_tree/tree.pyx":101
+  /* "rbi_tree/tree.pyx":100
  *         self.tree.findOverlappingIntervals(deref(ivl), out)
  *         del ivl
  *         a = []             # <<<<<<<<<<<<<<
  *         cdef vector[CIntervalObj].iterator it = out.begin()
  *         while it != out.end():
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_a = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rbi_tree/tree.pyx":102
+  /* "rbi_tree/tree.pyx":101
  *         del ivl
  *         a = []
  *         cdef vector[CIntervalObj].iterator it = out.begin()             # <<<<<<<<<<<<<<
@@ -3737,7 +3737,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
  */
   __pyx_v_it = __pyx_v_out.begin();
 
-  /* "rbi_tree/tree.pyx":103
+  /* "rbi_tree/tree.pyx":102
  *         a = []
  *         cdef vector[CIntervalObj].iterator it = out.begin()
  *         while it != out.end():             # <<<<<<<<<<<<<<
@@ -3748,7 +3748,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
     __pyx_t_2 = (__pyx_v_it != __pyx_v_out.end());
     if (!__pyx_t_2) break;
 
-    /* "rbi_tree/tree.pyx":105
+    /* "rbi_tree/tree.pyx":104
  *         while it != out.end():
  *             # Have to exclude for the sake of half-openness
  *             if deref(it).high!=start and deref(it).low!=end:             # <<<<<<<<<<<<<<
@@ -3766,7 +3766,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "rbi_tree/tree.pyx":106
+      /* "rbi_tree/tree.pyx":105
  *             # Have to exclude for the sake of half-openness
  *             if deref(it).high!=start and deref(it).low!=end:
  *                 val = <object>deref(it).value             # <<<<<<<<<<<<<<
@@ -3779,18 +3779,18 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
       __Pyx_XDECREF_SET(__pyx_v_val, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "rbi_tree/tree.pyx":107
+      /* "rbi_tree/tree.pyx":106
  *             if deref(it).high!=start and deref(it).low!=end:
  *                 val = <object>deref(it).value
  *                 a.append( (deref(it).low, deref(it).high, val) )             # <<<<<<<<<<<<<<
  *             inc(it)
  *         return a
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -3801,10 +3801,10 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
       PyTuple_SET_ITEM(__pyx_t_6, 2, __pyx_v_val);
       __pyx_t_1 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 107, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "rbi_tree/tree.pyx":105
+      /* "rbi_tree/tree.pyx":104
  *         while it != out.end():
  *             # Have to exclude for the sake of half-openness
  *             if deref(it).high!=start and deref(it).low!=end:             # <<<<<<<<<<<<<<
@@ -3813,7 +3813,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
  */
     }
 
-    /* "rbi_tree/tree.pyx":108
+    /* "rbi_tree/tree.pyx":107
  *                 val = <object>deref(it).value
  *                 a.append( (deref(it).low, deref(it).high, val) )
  *             inc(it)             # <<<<<<<<<<<<<<
@@ -3823,7 +3823,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
     (void)((++__pyx_v_it));
   }
 
-  /* "rbi_tree/tree.pyx":109
+  /* "rbi_tree/tree.pyx":108
  *                 a.append( (deref(it).low, deref(it).high, val) )
  *             inc(it)
  *         return a             # <<<<<<<<<<<<<<
@@ -3835,7 +3835,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":94
+  /* "rbi_tree/tree.pyx":93
  *         return
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
@@ -3858,7 +3858,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_8find(struct __pyx_obj_8rbi_tre
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":111
+/* "rbi_tree/tree.pyx":110
  *         return a
  * 
  *     def _from_intervals(cls, intervals=None):             # <<<<<<<<<<<<<<
@@ -3911,12 +3911,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_intervals);
           if (value) { values[0] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 111, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 110, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_from_intervals") < 0)) __PYX_ERR(0, 111, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_from_intervals") < 0)) __PYX_ERR(0, 110, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -3930,7 +3930,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_from_intervals", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 111, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_from_intervals", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 110, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITree._from_intervals", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3966,7 +3966,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_from_intervals", 0);
 
-  /* "rbi_tree/tree.pyx":112
+  /* "rbi_tree/tree.pyx":111
  * 
  *     def _from_intervals(cls, intervals=None):
  *         tree = cls()             # <<<<<<<<<<<<<<
@@ -3990,14 +3990,14 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __pyx_v_tree = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "rbi_tree/tree.pyx":113
+  /* "rbi_tree/tree.pyx":112
  *     def _from_intervals(cls, intervals=None):
  *         tree = cls()
  *         if not intervals is None:             # <<<<<<<<<<<<<<
@@ -4007,7 +4007,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
   __pyx_t_5 = (__pyx_v_intervals != Py_None);
   if (__pyx_t_5) {
 
-    /* "rbi_tree/tree.pyx":114
+    /* "rbi_tree/tree.pyx":113
  *         tree = cls()
  *         if not intervals is None:
  *             for start, end, val in intervals:             # <<<<<<<<<<<<<<
@@ -4018,26 +4018,26 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
       __pyx_t_1 = __pyx_v_intervals; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_intervals); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_intervals); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_7)) {
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 113, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 113, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -4047,7 +4047,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 114, __pyx_L1_error)
+            else __PYX_ERR(0, 113, __pyx_L1_error)
           }
           break;
         }
@@ -4059,7 +4059,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 114, __pyx_L1_error)
+          __PYX_ERR(0, 113, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -4075,17 +4075,17 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_9);
         #else
-        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_11 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10);
@@ -4095,7 +4095,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
         __Pyx_GOTREF(__pyx_t_8);
         index = 2; __pyx_t_9 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L6_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
         __pyx_t_11 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L7_unpacking_done;
@@ -4103,7 +4103,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_11 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 114, __pyx_L1_error)
+        __PYX_ERR(0, 113, __pyx_L1_error)
         __pyx_L7_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_start, __pyx_t_3);
@@ -4113,14 +4113,14 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
       __Pyx_XDECREF_SET(__pyx_v_val, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "rbi_tree/tree.pyx":115
+      /* "rbi_tree/tree.pyx":114
  *         if not intervals is None:
  *             for start, end, val in intervals:
  *                 tree.insert(start, end, val)             # <<<<<<<<<<<<<<
  *         return tree
  *     _from_intervals = classmethod(_from_intervals)
  */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_tree, __pyx_n_s_insert); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_tree, __pyx_n_s_insert); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_8 = NULL;
       __pyx_t_4 = 0;
@@ -4138,13 +4138,13 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
         PyObject *__pyx_callargs[4] = {__pyx_t_8, __pyx_v_start, __pyx_v_end, __pyx_v_val};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "rbi_tree/tree.pyx":114
+      /* "rbi_tree/tree.pyx":113
  *         tree = cls()
  *         if not intervals is None:
  *             for start, end, val in intervals:             # <<<<<<<<<<<<<<
@@ -4154,7 +4154,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "rbi_tree/tree.pyx":113
+    /* "rbi_tree/tree.pyx":112
  *     def _from_intervals(cls, intervals=None):
  *         tree = cls()
  *         if not intervals is None:             # <<<<<<<<<<<<<<
@@ -4163,7 +4163,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
  */
   }
 
-  /* "rbi_tree/tree.pyx":116
+  /* "rbi_tree/tree.pyx":115
  *             for start, end, val in intervals:
  *                 tree.insert(start, end, val)
  *         return tree             # <<<<<<<<<<<<<<
@@ -4175,7 +4175,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
   __pyx_r = __pyx_v_tree;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":111
+  /* "rbi_tree/tree.pyx":110
  *         return a
  * 
  *     def _from_intervals(cls, intervals=None):             # <<<<<<<<<<<<<<
@@ -4203,7 +4203,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_10_from_intervals(struct __pyx_
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":119
+/* "rbi_tree/tree.pyx":118
  *     _from_intervals = classmethod(_from_intervals)
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
@@ -4254,23 +4254,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_point)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find_at") < 0)) __PYX_ERR(0, 119, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find_at") < 0)) __PYX_ERR(0, 118, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_point = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_point == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L3_error)
+    __pyx_v_point = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_point == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find_at", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 119, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find_at", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 118, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITree.find_at", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4301,7 +4301,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_at", 0);
 
-  /* "rbi_tree/tree.pyx":123
+  /* "rbi_tree/tree.pyx":122
  *         overlapping intervals' ids."""
  *         cdef vector[CIntervalObj] out
  *         self.tree.findIntervalsContainPoint(point, out)             # <<<<<<<<<<<<<<
@@ -4310,19 +4310,19 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
  */
   __pyx_v_self->tree->findIntervalsContainPoint(__pyx_v_point, __pyx_v_out);
 
-  /* "rbi_tree/tree.pyx":124
+  /* "rbi_tree/tree.pyx":123
  *         cdef vector[CIntervalObj] out
  *         self.tree.findIntervalsContainPoint(point, out)
  *         a = []             # <<<<<<<<<<<<<<
  *         cdef vector[CIntervalObj].iterator it = out.begin()
  *         while it != out.end():
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_a = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rbi_tree/tree.pyx":125
+  /* "rbi_tree/tree.pyx":124
  *         self.tree.findIntervalsContainPoint(point, out)
  *         a = []
  *         cdef vector[CIntervalObj].iterator it = out.begin()             # <<<<<<<<<<<<<<
@@ -4331,7 +4331,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
  */
   __pyx_v_it = __pyx_v_out.begin();
 
-  /* "rbi_tree/tree.pyx":126
+  /* "rbi_tree/tree.pyx":125
  *         a = []
  *         cdef vector[CIntervalObj].iterator it = out.begin()
  *         while it != out.end():             # <<<<<<<<<<<<<<
@@ -4342,7 +4342,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
     __pyx_t_2 = (__pyx_v_it != __pyx_v_out.end());
     if (!__pyx_t_2) break;
 
-    /* "rbi_tree/tree.pyx":127
+    /* "rbi_tree/tree.pyx":126
  *         cdef vector[CIntervalObj].iterator it = out.begin()
  *         while it != out.end():
  *             if not deref(it).high == point:             # <<<<<<<<<<<<<<
@@ -4352,7 +4352,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
     __pyx_t_2 = (!((*__pyx_v_it).high == __pyx_v_point));
     if (__pyx_t_2) {
 
-      /* "rbi_tree/tree.pyx":128
+      /* "rbi_tree/tree.pyx":127
  *         while it != out.end():
  *             if not deref(it).high == point:
  *                 val = <object>deref(it).value             # <<<<<<<<<<<<<<
@@ -4365,18 +4365,18 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
       __Pyx_XDECREF_SET(__pyx_v_val, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "rbi_tree/tree.pyx":129
+      /* "rbi_tree/tree.pyx":128
  *             if not deref(it).high == point:
  *                 val = <object>deref(it).value
  *                 a.append( (deref(it).low, deref(it).high, val) )             # <<<<<<<<<<<<<<
  *             inc(it)
  *         return a
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 129, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -4387,10 +4387,10 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
       PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_v_val);
       __pyx_t_1 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 129, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "rbi_tree/tree.pyx":127
+      /* "rbi_tree/tree.pyx":126
  *         cdef vector[CIntervalObj].iterator it = out.begin()
  *         while it != out.end():
  *             if not deref(it).high == point:             # <<<<<<<<<<<<<<
@@ -4399,7 +4399,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
  */
     }
 
-    /* "rbi_tree/tree.pyx":130
+    /* "rbi_tree/tree.pyx":129
  *                 val = <object>deref(it).value
  *                 a.append( (deref(it).low, deref(it).high, val) )
  *             inc(it)             # <<<<<<<<<<<<<<
@@ -4409,7 +4409,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
     (void)((++__pyx_v_it));
   }
 
-  /* "rbi_tree/tree.pyx":131
+  /* "rbi_tree/tree.pyx":130
  *                 a.append( (deref(it).low, deref(it).high, val) )
  *             inc(it)
  *         return a             # <<<<<<<<<<<<<<
@@ -4421,7 +4421,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":119
+  /* "rbi_tree/tree.pyx":118
  *     _from_intervals = classmethod(_from_intervals)
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
@@ -4445,7 +4445,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_12find_at(struct __pyx_obj_8rbi
 }
 static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "rbi_tree/tree.pyx":133
+/* "rbi_tree/tree.pyx":132
  *         return a
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
@@ -4499,7 +4499,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_14iter_ivl(struct __pyx_obj_8rb
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8rbi_tree_4tree___pyx_scope_struct__iter_ivl *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 133, __pyx_L1_error)
+    __PYX_ERR(0, 132, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -4507,7 +4507,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_5ITree_14iter_ivl(struct __pyx_obj_8rb
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8rbi_tree_4tree_5ITree_16generator, __pyx_codeobj_, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter_ivl, __pyx_n_s_ITree_iter_ivl, __pyx_n_s_rbi_tree_tree); if (unlikely(!gen)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8rbi_tree_4tree_5ITree_16generator, __pyx_codeobj_, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter_ivl, __pyx_n_s_ITree_iter_ivl, __pyx_n_s_rbi_tree_tree); if (unlikely(!gen)) __PYX_ERR(0, 132, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4545,9 +4545,9 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 132, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":135
+  /* "rbi_tree/tree.pyx":134
  *     def iter_ivl(self):
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalObj] intervals = self.tree.intervals()             # <<<<<<<<<<<<<<
@@ -4556,7 +4556,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
  */
   __pyx_cur_scope->__pyx_v_intervals = __pyx_cur_scope->__pyx_v_self->tree->intervals();
 
-  /* "rbi_tree/tree.pyx":136
+  /* "rbi_tree/tree.pyx":135
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalObj] intervals = self.tree.intervals()
  *         cdef vector[CIntervalObj].iterator it = intervals.begin()             # <<<<<<<<<<<<<<
@@ -4565,7 +4565,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
  */
   __pyx_cur_scope->__pyx_v_it = __pyx_cur_scope->__pyx_v_intervals.begin();
 
-  /* "rbi_tree/tree.pyx":137
+  /* "rbi_tree/tree.pyx":136
  *         cdef vector[CIntervalObj] intervals = self.tree.intervals()
  *         cdef vector[CIntervalObj].iterator it = intervals.begin()
  *         while it != intervals.end():             # <<<<<<<<<<<<<<
@@ -4576,7 +4576,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
     __pyx_t_1 = (__pyx_cur_scope->__pyx_v_it != __pyx_cur_scope->__pyx_v_intervals.end());
     if (!__pyx_t_1) break;
 
-    /* "rbi_tree/tree.pyx":138
+    /* "rbi_tree/tree.pyx":137
  *         cdef vector[CIntervalObj].iterator it = intervals.begin()
  *         while it != intervals.end():
  *             val = <object>deref(it).value             # <<<<<<<<<<<<<<
@@ -4591,18 +4591,18 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "rbi_tree/tree.pyx":139
+    /* "rbi_tree/tree.pyx":138
  *         while it != intervals.end():
  *             val = <object>deref(it).value
  *             yield (deref(it).low, deref(it).high, val)             # <<<<<<<<<<<<<<
  *             inc(it)
  * 
  */
-    __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).low); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).low); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).high); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).high); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -4622,9 +4622,9 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
     __pyx_generator->resume_label = 1;
     return __pyx_r;
     __pyx_L6_resume_from_yield:;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 139, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 138, __pyx_L1_error)
 
-    /* "rbi_tree/tree.pyx":140
+    /* "rbi_tree/tree.pyx":139
  *             val = <object>deref(it).value
  *             yield (deref(it).low, deref(it).high, val)
  *             inc(it)             # <<<<<<<<<<<<<<
@@ -4635,7 +4635,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "rbi_tree/tree.pyx":133
+  /* "rbi_tree/tree.pyx":132
  *         return a
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
@@ -4663,7 +4663,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_5ITree_16generator(__pyx_CoroutineObje
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":148
+/* "rbi_tree/tree.pyx":149
  *     cdef tot
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -4698,7 +4698,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed___cinit__(struct __pyx_obj_8rbi_tree
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "rbi_tree/tree.pyx":149
+  /* "rbi_tree/tree.pyx":150
  * 
  *     def __cinit__(self):
  *         self.tree = new CTreeInt()             # <<<<<<<<<<<<<<
@@ -4707,7 +4707,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed___cinit__(struct __pyx_obj_8rbi_tree
  */
   __pyx_v_self->tree = new __pyx_t_8rbi_tree_4tree_CTreeInt();
 
-  /* "rbi_tree/tree.pyx":150
+  /* "rbi_tree/tree.pyx":151
  *     def __cinit__(self):
  *         self.tree = new CTreeInt()
  *         self.ivldata = Ivlmap()             # <<<<<<<<<<<<<<
@@ -4718,11 +4718,11 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed___cinit__(struct __pyx_obj_8rbi_tree
     __pyx_t_1 = __pyx_t_8rbi_tree_4tree_Ivlmap();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 150, __pyx_L1_error)
+    __PYX_ERR(0, 151, __pyx_L1_error)
   }
   __pyx_v_self->ivldata = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
 
-  /* "rbi_tree/tree.pyx":151
+  /* "rbi_tree/tree.pyx":152
  *         self.tree = new CTreeInt()
  *         self.ivldata = Ivlmap()
  *         self.datapos = self.ivldata.begin()             # <<<<<<<<<<<<<<
@@ -4731,7 +4731,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed___cinit__(struct __pyx_obj_8rbi_tree
  */
   __pyx_v_self->datapos = ((std::map<int,__pyx_t_8rbi_tree_4tree_CIntervalInt *> ::const_iterator)__pyx_v_self->ivldata.begin());
 
-  /* "rbi_tree/tree.pyx":152
+  /* "rbi_tree/tree.pyx":153
  *         self.ivldata = Ivlmap()
  *         self.datapos = self.ivldata.begin()
  *         self.tot = 0             # <<<<<<<<<<<<<<
@@ -4744,7 +4744,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed___cinit__(struct __pyx_obj_8rbi_tree
   __Pyx_DECREF(__pyx_v_self->tot);
   __pyx_v_self->tot = __pyx_int_0;
 
-  /* "rbi_tree/tree.pyx":148
+  /* "rbi_tree/tree.pyx":149
  *     cdef tot
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -4763,7 +4763,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed___cinit__(struct __pyx_obj_8rbi_tree
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":154
+/* "rbi_tree/tree.pyx":155
  *         self.tot = 0
  * 
  *     def __init__(self, tot=None):             # <<<<<<<<<<<<<<
@@ -4801,12 +4801,12 @@ static int __pyx_pw_8rbi_tree_4tree_6ITreed_3__init__(PyObject *__pyx_v_self, Py
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tot);
           if (value) { values[0] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 154, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 155, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -4820,7 +4820,7 @@ static int __pyx_pw_8rbi_tree_4tree_6ITreed_3__init__(PyObject *__pyx_v_self, Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 154, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 155, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4839,7 +4839,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed_2__init__(struct __pyx_obj_8rbi_tree
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "rbi_tree/tree.pyx":155
+  /* "rbi_tree/tree.pyx":156
  * 
  *     def __init__(self, tot=None):
  *         if not tot is None:             # <<<<<<<<<<<<<<
@@ -4849,7 +4849,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed_2__init__(struct __pyx_obj_8rbi_tree
   __pyx_t_1 = (__pyx_v_tot != Py_None);
   if (__pyx_t_1) {
 
-    /* "rbi_tree/tree.pyx":156
+    /* "rbi_tree/tree.pyx":157
  *     def __init__(self, tot=None):
  *         if not tot is None:
  *             self.tot = tot             # <<<<<<<<<<<<<<
@@ -4862,7 +4862,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed_2__init__(struct __pyx_obj_8rbi_tree
     __Pyx_DECREF(__pyx_v_self->tot);
     __pyx_v_self->tot = __pyx_v_tot;
 
-    /* "rbi_tree/tree.pyx":155
+    /* "rbi_tree/tree.pyx":156
  * 
  *     def __init__(self, tot=None):
  *         if not tot is None:             # <<<<<<<<<<<<<<
@@ -4871,7 +4871,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed_2__init__(struct __pyx_obj_8rbi_tree
  */
   }
 
-  /* "rbi_tree/tree.pyx":154
+  /* "rbi_tree/tree.pyx":155
  *         self.tot = 0
  * 
  *     def __init__(self, tot=None):             # <<<<<<<<<<<<<<
@@ -4885,7 +4885,7 @@ static int __pyx_pf_8rbi_tree_4tree_6ITreed_2__init__(struct __pyx_obj_8rbi_tree
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":158
+/* "rbi_tree/tree.pyx":159
  *             self.tot = tot
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -4909,7 +4909,7 @@ static void __pyx_pf_8rbi_tree_4tree_6ITreed_4__dealloc__(struct __pyx_obj_8rbi_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "rbi_tree/tree.pyx":159
+  /* "rbi_tree/tree.pyx":160
  * 
  *     def __dealloc__(self):
  *         del self.tree             # <<<<<<<<<<<<<<
@@ -4918,7 +4918,7 @@ static void __pyx_pf_8rbi_tree_4tree_6ITreed_4__dealloc__(struct __pyx_obj_8rbi_
  */
   delete __pyx_v_self->tree;
 
-  /* "rbi_tree/tree.pyx":158
+  /* "rbi_tree/tree.pyx":159
  *             self.tot = tot
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -4930,7 +4930,7 @@ static void __pyx_pf_8rbi_tree_4tree_6ITreed_4__dealloc__(struct __pyx_obj_8rbi_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "rbi_tree/tree.pyx":161
+/* "rbi_tree/tree.pyx":162
  *         del self.tree
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -4984,14 +4984,14 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_6__reduce__(struct __pyx_obj_8
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__reduce__", 0);
 
-  /* "rbi_tree/tree.pyx":162
+  /* "rbi_tree/tree.pyx":163
  * 
  *     def __reduce__(self):
  *         intervals = list(self.iter_ivl())             # <<<<<<<<<<<<<<
  *         return (ITreed._from_intervals, (intervals, self.tot))
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_iter_ivl); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_iter_ivl); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -5009,17 +5009,17 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_6__reduce__(struct __pyx_obj_8
     PyObject *__pyx_callargs[1] = {__pyx_t_3, };
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 0+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
-  __pyx_t_2 = __Pyx_PySequence_ListKeepNew(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PySequence_ListKeepNew(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_intervals = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "rbi_tree/tree.pyx":163
+  /* "rbi_tree/tree.pyx":164
  *     def __reduce__(self):
  *         intervals = list(self.iter_ivl())
  *         return (ITreed._from_intervals, (intervals, self.tot))             # <<<<<<<<<<<<<<
@@ -5027,9 +5027,9 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_6__reduce__(struct __pyx_obj_8
  *     def _from_intervals(cls, intervals=None, tot=0):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed), __pyx_n_s_from_intervals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed), __pyx_n_s_from_intervals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_intervals);
   __Pyx_GIVEREF(__pyx_v_intervals);
@@ -5037,7 +5037,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_6__reduce__(struct __pyx_obj_8
   __Pyx_INCREF(__pyx_v_self->tot);
   __Pyx_GIVEREF(__pyx_v_self->tot);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_self->tot);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
@@ -5049,7 +5049,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_6__reduce__(struct __pyx_obj_8
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":161
+  /* "rbi_tree/tree.pyx":162
  *         del self.tree
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
@@ -5071,7 +5071,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_6__reduce__(struct __pyx_obj_8
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":165
+/* "rbi_tree/tree.pyx":166
  *         return (ITreed._from_intervals, (intervals, self.tot))
  * 
  *     def _from_intervals(cls, intervals=None, tot=0):             # <<<<<<<<<<<<<<
@@ -5128,19 +5128,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_intervals);
           if (value) { values[0] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 165, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  1:
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_tot);
           if (value) { values[1] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 165, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 166, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_from_intervals") < 0)) __PYX_ERR(0, 165, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_from_intervals") < 0)) __PYX_ERR(0, 166, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -5157,7 +5157,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_from_intervals", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 165, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_from_intervals", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 166, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed._from_intervals", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5193,7 +5193,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_from_intervals", 0);
 
-  /* "rbi_tree/tree.pyx":166
+  /* "rbi_tree/tree.pyx":167
  * 
  *     def _from_intervals(cls, intervals=None, tot=0):
  *         tree = cls(tot)             # <<<<<<<<<<<<<<
@@ -5217,14 +5217,14 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_tot};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_4, 1+__pyx_t_4);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __pyx_v_tree = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "rbi_tree/tree.pyx":167
+  /* "rbi_tree/tree.pyx":168
  *     def _from_intervals(cls, intervals=None, tot=0):
  *         tree = cls(tot)
  *         if not intervals is None:             # <<<<<<<<<<<<<<
@@ -5234,7 +5234,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
   __pyx_t_5 = (__pyx_v_intervals != Py_None);
   if (__pyx_t_5) {
 
-    /* "rbi_tree/tree.pyx":168
+    /* "rbi_tree/tree.pyx":169
  *         tree = cls(tot)
  *         if not intervals is None:
  *             for start, end, val in intervals:             # <<<<<<<<<<<<<<
@@ -5245,26 +5245,26 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
       __pyx_t_1 = __pyx_v_intervals; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_intervals); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_intervals); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 169, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_7)) {
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely((0 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -5274,7 +5274,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 168, __pyx_L1_error)
+            else __PYX_ERR(0, 169, __pyx_L1_error)
           }
           break;
         }
@@ -5286,7 +5286,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
         if (unlikely(size != 3)) {
           if (size > 3) __Pyx_RaiseTooManyValuesError(3);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 168, __pyx_L1_error)
+          __PYX_ERR(0, 169, __pyx_L1_error)
         }
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -5302,17 +5302,17 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
         __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(__pyx_t_9);
         #else
-        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_10 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L1_error)
+        __pyx_t_10 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_11 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10);
@@ -5322,7 +5322,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
         __Pyx_GOTREF(__pyx_t_8);
         index = 2; __pyx_t_9 = __pyx_t_11(__pyx_t_10); if (unlikely(!__pyx_t_9)) goto __pyx_L6_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_9);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 168, __pyx_L1_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_11(__pyx_t_10), 3) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
         __pyx_t_11 = NULL;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         goto __pyx_L7_unpacking_done;
@@ -5330,7 +5330,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_11 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 168, __pyx_L1_error)
+        __PYX_ERR(0, 169, __pyx_L1_error)
         __pyx_L7_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_v_start, __pyx_t_3);
@@ -5340,14 +5340,14 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
       __Pyx_XDECREF_SET(__pyx_v_val, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "rbi_tree/tree.pyx":169
+      /* "rbi_tree/tree.pyx":170
  *         if not intervals is None:
  *             for start, end, val in intervals:
  *                 tree._insert(start, end, val)             # <<<<<<<<<<<<<<
  * 
  *         return tree
  */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_tree, __pyx_n_s_insert_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 169, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_tree, __pyx_n_s_insert_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __pyx_t_8 = NULL;
       __pyx_t_4 = 0;
@@ -5365,13 +5365,13 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
         PyObject *__pyx_callargs[4] = {__pyx_t_8, __pyx_v_start, __pyx_v_end, __pyx_v_val};
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_9, __pyx_callargs+1-__pyx_t_4, 3+__pyx_t_4);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "rbi_tree/tree.pyx":168
+      /* "rbi_tree/tree.pyx":169
  *         tree = cls(tot)
  *         if not intervals is None:
  *             for start, end, val in intervals:             # <<<<<<<<<<<<<<
@@ -5381,7 +5381,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "rbi_tree/tree.pyx":167
+    /* "rbi_tree/tree.pyx":168
  *     def _from_intervals(cls, intervals=None, tot=0):
  *         tree = cls(tot)
  *         if not intervals is None:             # <<<<<<<<<<<<<<
@@ -5390,7 +5390,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
  */
   }
 
-  /* "rbi_tree/tree.pyx":171
+  /* "rbi_tree/tree.pyx":172
  *                 tree._insert(start, end, val)
  * 
  *         return tree             # <<<<<<<<<<<<<<
@@ -5402,7 +5402,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
   __pyx_r = __pyx_v_tree;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":165
+  /* "rbi_tree/tree.pyx":166
  *         return (ITreed._from_intervals, (intervals, self.tot))
  * 
  *     def _from_intervals(cls, intervals=None, tot=0):             # <<<<<<<<<<<<<<
@@ -5430,7 +5430,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_8_from_intervals(struct __pyx_
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":175
+/* "rbi_tree/tree.pyx":176
  * 
  * 
  *     def _insert(self, start, end, value):             # <<<<<<<<<<<<<<
@@ -5486,26 +5486,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_start)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_end)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("_insert", 1, 3, 3, 1); __PYX_ERR(0, 175, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_insert", 1, 3, 3, 1); __PYX_ERR(0, 176, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_value)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("_insert", 1, 3, 3, 2); __PYX_ERR(0, 175, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_insert", 1, 3, 3, 2); __PYX_ERR(0, 176, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_insert") < 0)) __PYX_ERR(0, 175, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_insert") < 0)) __PYX_ERR(0, 176, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -5520,7 +5520,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_insert", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 175, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_insert", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 176, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed._insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5547,19 +5547,19 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_10_insert(struct __pyx_obj_8rb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_insert", 0);
 
-  /* "rbi_tree/tree.pyx":176
+  /* "rbi_tree/tree.pyx":177
  * 
  *     def _insert(self, start, end, value):
  *         cdef CIntervalInt* ivl = new CIntervalInt(start, end, value)             # <<<<<<<<<<<<<<
  *         self.tree.insert(deref(ivl))
  *         self.datapos = self.ivldata.insert(self.datapos,
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_start); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_end); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_start); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_v_end); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
   __pyx_v_ivl = new __pyx_t_8rbi_tree_4tree_CIntervalInt(__pyx_t_1, __pyx_t_2, __pyx_t_3);
 
-  /* "rbi_tree/tree.pyx":177
+  /* "rbi_tree/tree.pyx":178
  *     def _insert(self, start, end, value):
  *         cdef CIntervalInt* ivl = new CIntervalInt(start, end, value)
  *         self.tree.insert(deref(ivl))             # <<<<<<<<<<<<<<
@@ -5568,7 +5568,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_10_insert(struct __pyx_obj_8rb
  */
   (void)(__pyx_v_self->tree->insert((*__pyx_v_ivl)));
 
-  /* "rbi_tree/tree.pyx":179
+  /* "rbi_tree/tree.pyx":180
  *         self.tree.insert(deref(ivl))
  *         self.datapos = self.ivldata.insert(self.datapos,
  *                             keyval(ivl.value, ivl))             # <<<<<<<<<<<<<<
@@ -5579,10 +5579,10 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_10_insert(struct __pyx_obj_8rb
     __pyx_t_4 = __pyx_t_8rbi_tree_4tree_keyval(__pyx_v_ivl->value, __pyx_v_ivl);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 179, __pyx_L1_error)
+    __PYX_ERR(0, 180, __pyx_L1_error)
   }
 
-  /* "rbi_tree/tree.pyx":178
+  /* "rbi_tree/tree.pyx":179
  *         cdef CIntervalInt* ivl = new CIntervalInt(start, end, value)
  *         self.tree.insert(deref(ivl))
  *         self.datapos = self.ivldata.insert(self.datapos,             # <<<<<<<<<<<<<<
@@ -5593,11 +5593,11 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_10_insert(struct __pyx_obj_8rb
     __pyx_t_5 = __pyx_v_self->ivldata.insert(__pyx_v_self->datapos, __pyx_t_4);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 178, __pyx_L1_error)
+    __PYX_ERR(0, 179, __pyx_L1_error)
   }
   __pyx_v_self->datapos = __PYX_STD_MOVE_IF_SUPPORTED(((std::map<int,__pyx_t_8rbi_tree_4tree_CIntervalInt *> ::const_iterator)__pyx_t_5));
 
-  /* "rbi_tree/tree.pyx":175
+  /* "rbi_tree/tree.pyx":176
  * 
  * 
  *     def _insert(self, start, end, value):             # <<<<<<<<<<<<<<
@@ -5617,7 +5617,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_10_insert(struct __pyx_obj_8rb
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":181
+/* "rbi_tree/tree.pyx":182
  *                             keyval(ivl.value, ivl))
  * 
  *     def insert(self, start, end):             # <<<<<<<<<<<<<<
@@ -5671,19 +5671,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_start)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_end)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, 1); __PYX_ERR(0, 181, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, 1); __PYX_ERR(0, 182, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "insert") < 0)) __PYX_ERR(0, 181, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "insert") < 0)) __PYX_ERR(0, 182, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -5696,7 +5696,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 181, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("insert", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 182, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed.insert", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5723,26 +5723,26 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_12insert(struct __pyx_obj_8rbi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("insert", 0);
 
-  /* "rbi_tree/tree.pyx":184
+  /* "rbi_tree/tree.pyx":185
  *         """Insert an interval [start, end) and returns an id
  *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
  *         cdef int ivl_id = self.tot             # <<<<<<<<<<<<<<
  *         self._insert(start, end, ivl_id)
  *         self.tot += 1
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_self->tot); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_self->tot); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L1_error)
   __pyx_v_ivl_id = __pyx_t_1;
 
-  /* "rbi_tree/tree.pyx":185
+  /* "rbi_tree/tree.pyx":186
  *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
  *         cdef int ivl_id = self.tot
  *         self._insert(start, end, ivl_id)             # <<<<<<<<<<<<<<
  *         self.tot += 1
  *         return ivl_id
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_insert_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_insert_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ivl_id); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_ivl_id); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   __pyx_t_1 = 0;
@@ -5761,20 +5761,20 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_12insert(struct __pyx_obj_8rbi
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_1, 3+__pyx_t_1);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "rbi_tree/tree.pyx":186
+  /* "rbi_tree/tree.pyx":187
  *         cdef int ivl_id = self.tot
  *         self._insert(start, end, ivl_id)
  *         self.tot += 1             # <<<<<<<<<<<<<<
  *         return ivl_id
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_self->tot, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_self->tot, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __Pyx_GOTREF(__pyx_v_self->tot);
@@ -5782,7 +5782,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_12insert(struct __pyx_obj_8rbi
   __pyx_v_self->tot = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "rbi_tree/tree.pyx":187
+  /* "rbi_tree/tree.pyx":188
  *         self._insert(start, end, ivl_id)
  *         self.tot += 1
  *         return ivl_id             # <<<<<<<<<<<<<<
@@ -5790,13 +5790,13 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_12insert(struct __pyx_obj_8rbi
  *     cdef CIntervalInt* _get_interval(self, id):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_ivl_id); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_ivl_id); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":181
+  /* "rbi_tree/tree.pyx":182
  *                             keyval(ivl.value, ivl))
  * 
  *     def insert(self, start, end):             # <<<<<<<<<<<<<<
@@ -5818,7 +5818,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_12insert(struct __pyx_obj_8rbi
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":189
+/* "rbi_tree/tree.pyx":190
  *         return ivl_id
  * 
  *     cdef CIntervalInt* _get_interval(self, id):             # <<<<<<<<<<<<<<
@@ -5837,17 +5837,17 @@ static __pyx_t_8rbi_tree_4tree_CIntervalInt *__pyx_f_8rbi_tree_4tree_6ITreed__ge
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_get_interval", 0);
 
-  /* "rbi_tree/tree.pyx":190
+  /* "rbi_tree/tree.pyx":191
  * 
  *     cdef CIntervalInt* _get_interval(self, id):
  *         cdef map[int, CIntervalInt*].iterator it = self.ivldata.find(id)             # <<<<<<<<<<<<<<
  *         if it != self.ivldata.end():
  *             return deref(it).second
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_id); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_id); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
   __pyx_v_it = __pyx_v_self->ivldata.find(__pyx_t_1);
 
-  /* "rbi_tree/tree.pyx":191
+  /* "rbi_tree/tree.pyx":192
  *     cdef CIntervalInt* _get_interval(self, id):
  *         cdef map[int, CIntervalInt*].iterator it = self.ivldata.find(id)
  *         if it != self.ivldata.end():             # <<<<<<<<<<<<<<
@@ -5857,7 +5857,7 @@ static __pyx_t_8rbi_tree_4tree_CIntervalInt *__pyx_f_8rbi_tree_4tree_6ITreed__ge
   __pyx_t_2 = (__pyx_v_it != __pyx_v_self->ivldata.end());
   if (__pyx_t_2) {
 
-    /* "rbi_tree/tree.pyx":192
+    /* "rbi_tree/tree.pyx":193
  *         cdef map[int, CIntervalInt*].iterator it = self.ivldata.find(id)
  *         if it != self.ivldata.end():
  *             return deref(it).second             # <<<<<<<<<<<<<<
@@ -5867,7 +5867,7 @@ static __pyx_t_8rbi_tree_4tree_CIntervalInt *__pyx_f_8rbi_tree_4tree_6ITreed__ge
     __pyx_r = (*__pyx_v_it).second;
     goto __pyx_L0;
 
-    /* "rbi_tree/tree.pyx":191
+    /* "rbi_tree/tree.pyx":192
  *     cdef CIntervalInt* _get_interval(self, id):
  *         cdef map[int, CIntervalInt*].iterator it = self.ivldata.find(id)
  *         if it != self.ivldata.end():             # <<<<<<<<<<<<<<
@@ -5876,7 +5876,7 @@ static __pyx_t_8rbi_tree_4tree_CIntervalInt *__pyx_f_8rbi_tree_4tree_6ITreed__ge
  */
   }
 
-  /* "rbi_tree/tree.pyx":194
+  /* "rbi_tree/tree.pyx":195
  *             return deref(it).second
  *         else:
  *             return NULL             # <<<<<<<<<<<<<<
@@ -5888,7 +5888,7 @@ static __pyx_t_8rbi_tree_4tree_CIntervalInt *__pyx_f_8rbi_tree_4tree_6ITreed__ge
     goto __pyx_L0;
   }
 
-  /* "rbi_tree/tree.pyx":189
+  /* "rbi_tree/tree.pyx":190
  *         return ivl_id
  * 
  *     cdef CIntervalInt* _get_interval(self, id):             # <<<<<<<<<<<<<<
@@ -5905,7 +5905,7 @@ static __pyx_t_8rbi_tree_4tree_CIntervalInt *__pyx_f_8rbi_tree_4tree_6ITreed__ge
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":196
+/* "rbi_tree/tree.pyx":197
  *             return NULL
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
@@ -5959,19 +5959,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_start)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_end)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, 1); __PYX_ERR(0, 196, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, 1); __PYX_ERR(0, 197, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find") < 0)) __PYX_ERR(0, 196, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find") < 0)) __PYX_ERR(0, 197, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -5979,12 +5979,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
     }
-    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
-    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
+    __pyx_v_start = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_start == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
+    __pyx_v_end = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_end == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 197, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 196, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 197, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed.find", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6016,7 +6016,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find", 0);
 
-  /* "rbi_tree/tree.pyx":199
+  /* "rbi_tree/tree.pyx":200
  *         """Search intervals overlapping [start, end). Returns list of
  *         overlapping intervals' ids."""
  *         cdef CIntervalInt* ivl = new CIntervalInt(start,end)             # <<<<<<<<<<<<<<
@@ -6025,7 +6025,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
  */
   __pyx_v_ivl = new __pyx_t_8rbi_tree_4tree_CIntervalInt(__pyx_v_start, __pyx_v_end);
 
-  /* "rbi_tree/tree.pyx":201
+  /* "rbi_tree/tree.pyx":202
  *         cdef CIntervalInt* ivl = new CIntervalInt(start,end)
  *         cdef vector[CIntervalInt] out
  *         self.tree.findOverlappingIntervals(deref(ivl), out)             # <<<<<<<<<<<<<<
@@ -6034,7 +6034,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
  */
   __pyx_v_self->tree->findOverlappingIntervals((*__pyx_v_ivl), __pyx_v_out);
 
-  /* "rbi_tree/tree.pyx":202
+  /* "rbi_tree/tree.pyx":203
  *         cdef vector[CIntervalInt] out
  *         self.tree.findOverlappingIntervals(deref(ivl), out)
  *         del ivl             # <<<<<<<<<<<<<<
@@ -6043,19 +6043,19 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
  */
   delete __pyx_v_ivl;
 
-  /* "rbi_tree/tree.pyx":203
+  /* "rbi_tree/tree.pyx":204
  *         self.tree.findOverlappingIntervals(deref(ivl), out)
  *         del ivl
  *         a = []             # <<<<<<<<<<<<<<
  *         cdef vector[CIntervalInt].iterator it = out.begin()
  *         while it != out.end():
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_a = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rbi_tree/tree.pyx":204
+  /* "rbi_tree/tree.pyx":205
  *         del ivl
  *         a = []
  *         cdef vector[CIntervalInt].iterator it = out.begin()             # <<<<<<<<<<<<<<
@@ -6064,7 +6064,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
  */
   __pyx_v_it = __pyx_v_out.begin();
 
-  /* "rbi_tree/tree.pyx":205
+  /* "rbi_tree/tree.pyx":206
  *         a = []
  *         cdef vector[CIntervalInt].iterator it = out.begin()
  *         while it != out.end():             # <<<<<<<<<<<<<<
@@ -6075,7 +6075,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
     __pyx_t_2 = (__pyx_v_it != __pyx_v_out.end());
     if (!__pyx_t_2) break;
 
-    /* "rbi_tree/tree.pyx":207
+    /* "rbi_tree/tree.pyx":208
  *         while it != out.end():
  *             # Have to exclude for the sake of half-openness
  *             if deref(it).high!=start and deref(it).low!=end:             # <<<<<<<<<<<<<<
@@ -6093,20 +6093,20 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "rbi_tree/tree.pyx":208
+      /* "rbi_tree/tree.pyx":209
  *             # Have to exclude for the sake of half-openness
  *             if deref(it).high!=start and deref(it).low!=end:
  *                 a.append( (deref(it).low, deref(it).high, deref(it).value) )             # <<<<<<<<<<<<<<
  *             inc(it)
  *         return a
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyInt_From_int((*__pyx_v_it).value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int((*__pyx_v_it).value); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
@@ -6117,10 +6117,10 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
       __pyx_t_1 = 0;
       __pyx_t_4 = 0;
       __pyx_t_5 = 0;
-      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_6); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "rbi_tree/tree.pyx":207
+      /* "rbi_tree/tree.pyx":208
  *         while it != out.end():
  *             # Have to exclude for the sake of half-openness
  *             if deref(it).high!=start and deref(it).low!=end:             # <<<<<<<<<<<<<<
@@ -6129,7 +6129,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
  */
     }
 
-    /* "rbi_tree/tree.pyx":209
+    /* "rbi_tree/tree.pyx":210
  *             if deref(it).high!=start and deref(it).low!=end:
  *                 a.append( (deref(it).low, deref(it).high, deref(it).value) )
  *             inc(it)             # <<<<<<<<<<<<<<
@@ -6139,7 +6139,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
     (void)((++__pyx_v_it));
   }
 
-  /* "rbi_tree/tree.pyx":210
+  /* "rbi_tree/tree.pyx":211
  *                 a.append( (deref(it).low, deref(it).high, deref(it).value) )
  *             inc(it)
  *         return a             # <<<<<<<<<<<<<<
@@ -6151,7 +6151,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":196
+  /* "rbi_tree/tree.pyx":197
  *             return NULL
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
@@ -6174,7 +6174,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_14find(struct __pyx_obj_8rbi_t
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":212
+/* "rbi_tree/tree.pyx":213
  *         return a
  * 
  *     def get_ivl(self, id):             # <<<<<<<<<<<<<<
@@ -6225,12 +6225,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_id)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 212, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_ivl") < 0)) __PYX_ERR(0, 212, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_ivl") < 0)) __PYX_ERR(0, 213, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -6241,7 +6241,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_ivl", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 212, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_ivl", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 213, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed.get_ivl", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6267,17 +6267,17 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_16get_ivl(struct __pyx_obj_8rb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_ivl", 0);
 
-  /* "rbi_tree/tree.pyx":214
+  /* "rbi_tree/tree.pyx":215
  *     def get_ivl(self, id):
  *         """Return a list [start,end] of the interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)             # <<<<<<<<<<<<<<
  *         return [deref(ivl).low, deref(ivl).high]
  * 
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_8rbi_tree_4tree_ITreed *)__pyx_v_self->__pyx_vtab)->_get_interval(__pyx_v_self, __pyx_v_id); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_8rbi_tree_4tree_ITreed *)__pyx_v_self->__pyx_vtab)->_get_interval(__pyx_v_self, __pyx_v_id); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
   __pyx_v_ivl = __pyx_t_1;
 
-  /* "rbi_tree/tree.pyx":215
+  /* "rbi_tree/tree.pyx":216
  *         """Return a list [start,end] of the interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  *         return [deref(ivl).low, deref(ivl).high]             # <<<<<<<<<<<<<<
@@ -6285,11 +6285,11 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_16get_ivl(struct __pyx_obj_8rb
  *     def find_at(self, int point):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_int((*__pyx_v_ivl).low); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int((*__pyx_v_ivl).low); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_v_ivl).high); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_v_ivl).high); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -6301,7 +6301,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_16get_ivl(struct __pyx_obj_8rb
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":212
+  /* "rbi_tree/tree.pyx":213
  *         return a
  * 
  *     def get_ivl(self, id):             # <<<<<<<<<<<<<<
@@ -6322,7 +6322,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_16get_ivl(struct __pyx_obj_8rb
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":217
+/* "rbi_tree/tree.pyx":218
  *         return [deref(ivl).low, deref(ivl).high]
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
@@ -6373,23 +6373,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_point)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find_at") < 0)) __PYX_ERR(0, 217, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "find_at") < 0)) __PYX_ERR(0, 218, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_point = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_point == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L3_error)
+    __pyx_v_point = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_point == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 218, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find_at", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 217, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find_at", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 218, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed.find_at", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6419,7 +6419,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_at", 0);
 
-  /* "rbi_tree/tree.pyx":221
+  /* "rbi_tree/tree.pyx":222
  *         overlapping intervals' ids."""
  *         cdef vector[CIntervalInt] out
  *         self.tree.findIntervalsContainPoint(point, out)             # <<<<<<<<<<<<<<
@@ -6428,19 +6428,19 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
  */
   __pyx_v_self->tree->findIntervalsContainPoint(__pyx_v_point, __pyx_v_out);
 
-  /* "rbi_tree/tree.pyx":222
+  /* "rbi_tree/tree.pyx":223
  *         cdef vector[CIntervalInt] out
  *         self.tree.findIntervalsContainPoint(point, out)
  *         a = []             # <<<<<<<<<<<<<<
  *         cdef vector[CIntervalInt].iterator it = out.begin()
  *         while it != out.end():
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_a = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rbi_tree/tree.pyx":223
+  /* "rbi_tree/tree.pyx":224
  *         self.tree.findIntervalsContainPoint(point, out)
  *         a = []
  *         cdef vector[CIntervalInt].iterator it = out.begin()             # <<<<<<<<<<<<<<
@@ -6449,7 +6449,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
  */
   __pyx_v_it = __pyx_v_out.begin();
 
-  /* "rbi_tree/tree.pyx":224
+  /* "rbi_tree/tree.pyx":225
  *         a = []
  *         cdef vector[CIntervalInt].iterator it = out.begin()
  *         while it != out.end():             # <<<<<<<<<<<<<<
@@ -6460,7 +6460,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
     __pyx_t_2 = (__pyx_v_it != __pyx_v_out.end());
     if (!__pyx_t_2) break;
 
-    /* "rbi_tree/tree.pyx":225
+    /* "rbi_tree/tree.pyx":226
  *         cdef vector[CIntervalInt].iterator it = out.begin()
  *         while it != out.end():
  *             if not deref(it).high == point:             # <<<<<<<<<<<<<<
@@ -6470,20 +6470,20 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
     __pyx_t_2 = (!((*__pyx_v_it).high == __pyx_v_point));
     if (__pyx_t_2) {
 
-      /* "rbi_tree/tree.pyx":226
+      /* "rbi_tree/tree.pyx":227
  *         while it != out.end():
  *             if not deref(it).high == point:
  *                 a.append( (deref(it).low, deref(it).high, deref(it).value) )             # <<<<<<<<<<<<<<
  *             inc(it)
  *         return a
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int((*__pyx_v_it).low); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_v_it).high); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_v_it).value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_v_it).value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -6494,10 +6494,10 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
       __pyx_t_1 = 0;
       __pyx_t_3 = 0;
       __pyx_t_4 = 0;
-      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 226, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_a, __pyx_t_5); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "rbi_tree/tree.pyx":225
+      /* "rbi_tree/tree.pyx":226
  *         cdef vector[CIntervalInt].iterator it = out.begin()
  *         while it != out.end():
  *             if not deref(it).high == point:             # <<<<<<<<<<<<<<
@@ -6506,7 +6506,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
  */
     }
 
-    /* "rbi_tree/tree.pyx":227
+    /* "rbi_tree/tree.pyx":228
  *             if not deref(it).high == point:
  *                 a.append( (deref(it).low, deref(it).high, deref(it).value) )
  *             inc(it)             # <<<<<<<<<<<<<<
@@ -6516,7 +6516,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
     (void)((++__pyx_v_it));
   }
 
-  /* "rbi_tree/tree.pyx":228
+  /* "rbi_tree/tree.pyx":229
  *                 a.append( (deref(it).low, deref(it).high, deref(it).value) )
  *             inc(it)
  *         return a             # <<<<<<<<<<<<<<
@@ -6528,7 +6528,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "rbi_tree/tree.pyx":217
+  /* "rbi_tree/tree.pyx":218
  *         return [deref(ivl).low, deref(ivl).high]
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
@@ -6551,7 +6551,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_18find_at(struct __pyx_obj_8rb
   return __pyx_r;
 }
 
-/* "rbi_tree/tree.pyx":230
+/* "rbi_tree/tree.pyx":231
  *         return a
  * 
  *     def remove(self, int id):             # <<<<<<<<<<<<<<
@@ -6602,23 +6602,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_id)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "remove") < 0)) __PYX_ERR(0, 230, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "remove") < 0)) __PYX_ERR(0, 231, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 230, __pyx_L3_error)
+    __pyx_v_id = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_id == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 231, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("remove", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 230, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("remove", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 231, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("rbi_tree.tree.ITreed.remove", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6643,20 +6643,20 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("remove", 0);
 
-  /* "rbi_tree/tree.pyx":232
+  /* "rbi_tree/tree.pyx":233
  *     def remove(self, int id):
  *         """Delete interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)             # <<<<<<<<<<<<<<
  *         if not ivl is NULL:
  *             self.tree.remove(deref(ivl))
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = ((struct __pyx_vtabstruct_8rbi_tree_4tree_ITreed *)__pyx_v_self->__pyx_vtab)->_get_interval(__pyx_v_self, __pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_8rbi_tree_4tree_ITreed *)__pyx_v_self->__pyx_vtab)->_get_interval(__pyx_v_self, __pyx_t_1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_ivl = __pyx_t_2;
 
-  /* "rbi_tree/tree.pyx":233
+  /* "rbi_tree/tree.pyx":234
  *         """Delete interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  *         if not ivl is NULL:             # <<<<<<<<<<<<<<
@@ -6666,7 +6666,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
   __pyx_t_3 = (__pyx_v_ivl != NULL);
   if (likely(__pyx_t_3)) {
 
-    /* "rbi_tree/tree.pyx":234
+    /* "rbi_tree/tree.pyx":235
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  *         if not ivl is NULL:
  *             self.tree.remove(deref(ivl))             # <<<<<<<<<<<<<<
@@ -6675,7 +6675,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
  */
     (void)(__pyx_v_self->tree->remove((*__pyx_v_ivl)));
 
-    /* "rbi_tree/tree.pyx":233
+    /* "rbi_tree/tree.pyx":234
  *         """Delete interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  *         if not ivl is NULL:             # <<<<<<<<<<<<<<
@@ -6685,7 +6685,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
     goto __pyx_L3;
   }
 
-  /* "rbi_tree/tree.pyx":236
+  /* "rbi_tree/tree.pyx":237
  *             self.tree.remove(deref(ivl))
  *         else:
  *             raise ValueError             # <<<<<<<<<<<<<<
@@ -6694,11 +6694,11 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
  */
   /*else*/ {
     __Pyx_Raise(__pyx_builtin_ValueError, 0, 0, 0);
-    __PYX_ERR(0, 236, __pyx_L1_error)
+    __PYX_ERR(0, 237, __pyx_L1_error)
   }
   __pyx_L3:;
 
-  /* "rbi_tree/tree.pyx":237
+  /* "rbi_tree/tree.pyx":238
  *         else:
  *             raise ValueError
  *         self.ivldata.erase(id)             # <<<<<<<<<<<<<<
@@ -6707,7 +6707,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
  */
   (void)(__pyx_v_self->ivldata.erase(__pyx_v_id));
 
-  /* "rbi_tree/tree.pyx":238
+  /* "rbi_tree/tree.pyx":239
  *             raise ValueError
  *         self.ivldata.erase(id)
  *         del ivl             # <<<<<<<<<<<<<<
@@ -6716,7 +6716,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
  */
   delete __pyx_v_ivl;
 
-  /* "rbi_tree/tree.pyx":230
+  /* "rbi_tree/tree.pyx":231
  *         return a
  * 
  *     def remove(self, int id):             # <<<<<<<<<<<<<<
@@ -6738,7 +6738,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_20remove(struct __pyx_obj_8rbi
 }
 static PyObject *__pyx_gb_8rbi_tree_4tree_6ITreed_24generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "rbi_tree/tree.pyx":240
+/* "rbi_tree/tree.pyx":241
  *         del ivl
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
@@ -6792,7 +6792,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_22iter_ivl(struct __pyx_obj_8r
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 240, __pyx_L1_error)
+    __PYX_ERR(0, 241, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -6800,7 +6800,7 @@ static PyObject *__pyx_pf_8rbi_tree_4tree_6ITreed_22iter_ivl(struct __pyx_obj_8r
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8rbi_tree_4tree_6ITreed_24generator1, __pyx_codeobj__2, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter_ivl, __pyx_n_s_ITreed_iter_ivl, __pyx_n_s_rbi_tree_tree); if (unlikely(!gen)) __PYX_ERR(0, 240, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_8rbi_tree_4tree_6ITreed_24generator1, __pyx_codeobj__2, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter_ivl, __pyx_n_s_ITreed_iter_ivl, __pyx_n_s_rbi_tree_tree); if (unlikely(!gen)) __PYX_ERR(0, 241, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6838,9 +6838,9 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_6ITreed_24generator1(__pyx_CoroutineOb
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 241, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":242
+  /* "rbi_tree/tree.pyx":243
  *     def iter_ivl(self):
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalInt] intervals = self.tree.intervals()             # <<<<<<<<<<<<<<
@@ -6849,7 +6849,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_6ITreed_24generator1(__pyx_CoroutineOb
  */
   __pyx_cur_scope->__pyx_v_intervals = __pyx_cur_scope->__pyx_v_self->tree->intervals();
 
-  /* "rbi_tree/tree.pyx":243
+  /* "rbi_tree/tree.pyx":244
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalInt] intervals = self.tree.intervals()
  *         cdef vector[CIntervalInt].iterator it = intervals.begin()             # <<<<<<<<<<<<<<
@@ -6858,7 +6858,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_6ITreed_24generator1(__pyx_CoroutineOb
  */
   __pyx_cur_scope->__pyx_v_it = __pyx_cur_scope->__pyx_v_intervals.begin();
 
-  /* "rbi_tree/tree.pyx":244
+  /* "rbi_tree/tree.pyx":245
  *         cdef vector[CIntervalInt] intervals = self.tree.intervals()
  *         cdef vector[CIntervalInt].iterator it = intervals.begin()
  *         while it != intervals.end():             # <<<<<<<<<<<<<<
@@ -6869,19 +6869,19 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_6ITreed_24generator1(__pyx_CoroutineOb
     __pyx_t_1 = (__pyx_cur_scope->__pyx_v_it != __pyx_cur_scope->__pyx_v_intervals.end());
     if (!__pyx_t_1) break;
 
-    /* "rbi_tree/tree.pyx":245
+    /* "rbi_tree/tree.pyx":246
  *         cdef vector[CIntervalInt].iterator it = intervals.begin()
  *         while it != intervals.end():
  *             yield (deref(it).low, deref(it).high, deref(it).value)             # <<<<<<<<<<<<<<
  *             inc(it)
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).low); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).low); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).high); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).high); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int((*__pyx_cur_scope->__pyx_v_it).value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -6901,9 +6901,9 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_6ITreed_24generator1(__pyx_CoroutineOb
     __pyx_generator->resume_label = 1;
     return __pyx_r;
     __pyx_L6_resume_from_yield:;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 245, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 246, __pyx_L1_error)
 
-    /* "rbi_tree/tree.pyx":246
+    /* "rbi_tree/tree.pyx":247
  *         while it != intervals.end():
  *             yield (deref(it).low, deref(it).high, deref(it).value)
  *             inc(it)             # <<<<<<<<<<<<<<
@@ -6912,7 +6912,7 @@ static PyObject *__pyx_gb_8rbi_tree_4tree_6ITreed_24generator1(__pyx_CoroutineOb
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "rbi_tree/tree.pyx":240
+  /* "rbi_tree/tree.pyx":241
  *         del ivl
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
@@ -7171,6 +7171,7 @@ static PyMethodDef __pyx_methods_8rbi_tree_4tree_ITreed[] = {
 #if CYTHON_USE_TYPE_SPECS
 static PyType_Slot __pyx_type_8rbi_tree_4tree_ITreed_slots[] = {
   {Py_tp_dealloc, (void *)__pyx_tp_dealloc_8rbi_tree_4tree_ITreed},
+  {Py_tp_doc, (void *)PyDoc_STR("Version of ITree supporting deletion\n    ")},
   {Py_tp_traverse, (void *)__pyx_tp_traverse_8rbi_tree_4tree_ITreed},
   {Py_tp_clear, (void *)__pyx_tp_clear_8rbi_tree_4tree_ITreed},
   {Py_tp_methods, (void *)__pyx_methods_8rbi_tree_4tree_ITreed},
@@ -7218,7 +7219,7 @@ static PyTypeObject __pyx_type_8rbi_tree_4tree_ITreed = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
-  0, /*tp_doc*/
+  PyDoc_STR("Version of ITree supporting deletion\n    "), /*tp_doc*/
   __pyx_tp_traverse_8rbi_tree_4tree_ITreed, /*tp_traverse*/
   __pyx_tp_clear_8rbi_tree_4tree_ITreed, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -7661,7 +7662,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 237, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -7688,8 +7689,8 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return (ITree._from_intervals, (intervals,))
  * 
  *     def insert(self, start, end, value=None):             # <<<<<<<<<<<<<<
- *         """Insert an interval [start, end) and returns an id
- *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
+ *         """Insert an interval [start, end) """
+ * 
  */
   __pyx_tuple__5 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_value, __pyx_n_s_ivl, __pyx_n_s_val); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
@@ -7699,158 +7700,158 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "rbi_tree/tree.pyx":94
+  /* "rbi_tree/tree.pyx":93
  *         return
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
  *         """Search intervals overlapping [start, end). Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_tuple__8 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_ivl, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it, __pyx_n_s_val); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_ivl, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it, __pyx_n_s_val); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find, 94, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find, 93, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 93, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":111
+  /* "rbi_tree/tree.pyx":110
  *         return a
  * 
  *     def _from_intervals(cls, intervals=None):             # <<<<<<<<<<<<<<
  *         tree = cls()
  *         if not intervals is None:
  */
-  __pyx_tuple__10 = PyTuple_Pack(6, __pyx_n_s_cls, __pyx_n_s_intervals, __pyx_n_s_tree, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_val); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(6, __pyx_n_s_cls, __pyx_n_s_intervals, __pyx_n_s_tree, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_val); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_from_intervals, 111, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_from_intervals, 110, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 110, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":119
+  /* "rbi_tree/tree.pyx":118
  *     _from_intervals = classmethod(_from_intervals)
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
  *         """Search for intervals containing specified point. Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_tuple__12 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_point, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it, __pyx_n_s_val); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_point, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it, __pyx_n_s_val); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find_at, 119, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find_at, 118, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 118, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":133
+  /* "rbi_tree/tree.pyx":132
  *         return a
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalObj] intervals = self.tree.intervals()
  */
-  __pyx_tuple__14 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_intervals, __pyx_n_s_it, __pyx_n_s_val); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_intervals, __pyx_n_s_it, __pyx_n_s_val); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_iter_ivl, 133, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_codeobj_ = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_iter_ivl, 132, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj_)) __PYX_ERR(0, 132, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":161
+  /* "rbi_tree/tree.pyx":162
  *         del self.tree
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
  *         intervals = list(self.iter_ivl())
  *         return (ITreed._from_intervals, (intervals, self.tot))
  */
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_reduce, 161, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_reduce, 162, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 162, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":165
+  /* "rbi_tree/tree.pyx":166
  *         return (ITreed._from_intervals, (intervals, self.tot))
  * 
  *     def _from_intervals(cls, intervals=None, tot=0):             # <<<<<<<<<<<<<<
  *         tree = cls(tot)
  *         if not intervals is None:
  */
-  __pyx_tuple__16 = PyTuple_Pack(7, __pyx_n_s_cls, __pyx_n_s_intervals, __pyx_n_s_tot, __pyx_n_s_tree, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_val); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(7, __pyx_n_s_cls, __pyx_n_s_intervals, __pyx_n_s_tot, __pyx_n_s_tree, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_val); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_from_intervals, 165, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 165, __pyx_L1_error)
-  __pyx_tuple__18 = PyTuple_Pack(2, Py_None, __pyx_int_0); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_from_intervals, 166, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(2, Py_None, __pyx_int_0); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "rbi_tree/tree.pyx":175
+  /* "rbi_tree/tree.pyx":176
  * 
  * 
  *     def _insert(self, start, end, value):             # <<<<<<<<<<<<<<
  *         cdef CIntervalInt* ivl = new CIntervalInt(start, end, value)
  *         self.tree.insert(deref(ivl))
  */
-  __pyx_tuple__19 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_value, __pyx_n_s_ivl); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_value, __pyx_n_s_ivl); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_insert_2, 175, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_insert_2, 176, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 176, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":181
+  /* "rbi_tree/tree.pyx":182
  *                             keyval(ivl.value, ivl))
  * 
  *     def insert(self, start, end):             # <<<<<<<<<<<<<<
  *         """Insert an interval [start, end) and returns an id
  *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
  */
-  __pyx_tuple__21 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_ivl_id); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_ivl_id); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_insert, 181, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_insert, 182, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 182, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":196
+  /* "rbi_tree/tree.pyx":197
  *             return NULL
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
  *         """Search intervals overlapping [start, end). Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_tuple__23 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_ivl, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_start, __pyx_n_s_end, __pyx_n_s_ivl, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find, 196, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find, 197, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 197, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":212
+  /* "rbi_tree/tree.pyx":213
  *         return a
  * 
  *     def get_ivl(self, id):             # <<<<<<<<<<<<<<
  *         """Return a list [start,end] of the interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  */
-  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_id, __pyx_n_s_ivl); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_id, __pyx_n_s_ivl); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_get_ivl, 212, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_get_ivl, 213, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 213, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":217
+  /* "rbi_tree/tree.pyx":218
  *         return [deref(ivl).low, deref(ivl).high]
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
  *         """Search for intervals containing specified point. Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_tuple__27 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_point, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_point, __pyx_n_s_out, __pyx_n_s_a, __pyx_n_s_it); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find_at, 217, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_find_at, 218, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 218, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":230
+  /* "rbi_tree/tree.pyx":231
  *         return a
  * 
  *     def remove(self, int id):             # <<<<<<<<<<<<<<
  *         """Delete interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  */
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_remove, 230, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_remove, 231, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 231, __pyx_L1_error)
 
-  /* "rbi_tree/tree.pyx":240
+  /* "rbi_tree/tree.pyx":241
  *         del ivl
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalInt] intervals = self.tree.intervals()
  */
-  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_intervals, __pyx_n_s_it); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_intervals, __pyx_n_s_it); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_iter_ivl, 240, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_rbi_tree_tree_pyx, __pyx_n_s_iter_ivl, 241, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -7936,15 +7937,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtabptr_8rbi_tree_4tree_ITreed = &__pyx_vtable_8rbi_tree_4tree_ITreed;
   __pyx_vtable_8rbi_tree_4tree_ITreed._get_interval = (__pyx_t_8rbi_tree_4tree_CIntervalInt *(*)(struct __pyx_obj_8rbi_tree_4tree_ITreed *, PyObject *))__pyx_f_8rbi_tree_4tree_6ITreed__get_interval;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_8rbi_tree_4tree_ITreed = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8rbi_tree_4tree_ITreed_spec, NULL); if (unlikely(!__pyx_ptype_8rbi_tree_4tree_ITreed)) __PYX_ERR(0, 142, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8rbi_tree_4tree_ITreed_spec, __pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_ptype_8rbi_tree_4tree_ITreed = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8rbi_tree_4tree_ITreed_spec, NULL); if (unlikely(!__pyx_ptype_8rbi_tree_4tree_ITreed)) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8rbi_tree_4tree_ITreed_spec, __pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
   #else
   __pyx_ptype_8rbi_tree_4tree_ITreed = &__pyx_type_8rbi_tree_4tree_ITreed;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_8rbi_tree_4tree_ITreed->tp_print = 0;
@@ -7954,21 +7955,21 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_8rbi_tree_4tree_ITreed->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_8rbi_tree_4tree_ITreed, __pyx_vtabptr_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_8rbi_tree_4tree_ITreed, __pyx_vtabptr_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ITreed, (PyObject *) __pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_ITreed, (PyObject *) __pyx_ptype_8rbi_tree_4tree_ITreed) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8rbi_tree_4tree___pyx_scope_struct__iter_ivl_spec, NULL); if (unlikely(!__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl)) __PYX_ERR(0, 133, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8rbi_tree_4tree___pyx_scope_struct__iter_ivl_spec, __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8rbi_tree_4tree___pyx_scope_struct__iter_ivl_spec, NULL); if (unlikely(!__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl)) __PYX_ERR(0, 132, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8rbi_tree_4tree___pyx_scope_struct__iter_ivl_spec, __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
   #else
   __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl = &__pyx_type_8rbi_tree_4tree___pyx_scope_struct__iter_ivl;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct__iter_ivl->tp_print = 0;
@@ -7979,15 +7980,15 @@ static int __Pyx_modinit_type_init_code(void) {
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl_spec, NULL); if (unlikely(!__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl)) __PYX_ERR(0, 240, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl_spec, __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl) < 0) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl_spec, NULL); if (unlikely(!__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl)) __PYX_ERR(0, 241, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl_spec, __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
   #else
   __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl = &__pyx_type_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl) < 0) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_8rbi_tree_4tree___pyx_scope_struct_1_iter_ivl->tp_print = 0;
@@ -8346,8 +8347,8 @@ if (!__Pyx_RefNanny) {
  *         return (ITree._from_intervals, (intervals,))
  * 
  *     def insert(self, start, end, value=None):             # <<<<<<<<<<<<<<
- *         """Insert an interval [start, end) and returns an id
- *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
+ *         """Insert an interval [start, end) """
+ * 
  */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_7insert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree_insert, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -8356,206 +8357,206 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITree);
 
-  /* "rbi_tree/tree.pyx":94
+  /* "rbi_tree/tree.pyx":93
  *         return
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
  *         """Search intervals overlapping [start, end). Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_9find, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree_find, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_9find, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree_find, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_find, __pyx_t_2) < 0) __PYX_ERR(0, 94, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_find, __pyx_t_2) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITree);
 
-  /* "rbi_tree/tree.pyx":111
+  /* "rbi_tree/tree.pyx":110
  *         return a
  * 
  *     def _from_intervals(cls, intervals=None):             # <<<<<<<<<<<<<<
  *         tree = cls()
  *         if not intervals is None:
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_11_from_intervals, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree__from_intervals, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_11_from_intervals, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree__from_intervals, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_tuple__7);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_from_intervals, __pyx_t_2) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_from_intervals, __pyx_t_2) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITree);
 
-  /* "rbi_tree/tree.pyx":117
+  /* "rbi_tree/tree.pyx":116
  *                 tree.insert(start, end, val)
  *         return tree
  *     _from_intervals = classmethod(_from_intervals)             # <<<<<<<<<<<<<<
  * 
  *     def find_at(self, int point):
  */
-  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree, __pyx_n_s_from_intervals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_2, (PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree, __pyx_n_s_from_intervals); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_Method_ClassMethod(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Method_ClassMethod(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_from_intervals, __pyx_t_3) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_from_intervals, __pyx_t_3) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITree);
 
-  /* "rbi_tree/tree.pyx":119
+  /* "rbi_tree/tree.pyx":118
  *     _from_intervals = classmethod(_from_intervals)
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
  *         """Search for intervals containing specified point. Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_13find_at, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree_find_at, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_13find_at, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree_find_at, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_find_at, __pyx_t_3) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_find_at, __pyx_t_3) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITree);
 
-  /* "rbi_tree/tree.pyx":133
+  /* "rbi_tree/tree.pyx":132
  *         return a
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalObj] intervals = self.tree.intervals()
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_15iter_ivl, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree_iter_ivl, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_5ITree_15iter_ivl, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITree_iter_ivl, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj_)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_iter_ivl, __pyx_t_3) < 0) __PYX_ERR(0, 133, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITree->tp_dict, __pyx_n_s_iter_ivl, __pyx_t_3) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITree);
 
-  /* "rbi_tree/tree.pyx":161
+  /* "rbi_tree/tree.pyx":162
  *         del self.tree
  * 
  *     def __reduce__(self):             # <<<<<<<<<<<<<<
  *         intervals = list(self.iter_ivl())
  *         return (ITreed._from_intervals, (intervals, self.tot))
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_7__reduce__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed___reduce, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_7__reduce__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed___reduce, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_reduce, __pyx_t_3) < 0) __PYX_ERR(0, 161, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_reduce, __pyx_t_3) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":165
+  /* "rbi_tree/tree.pyx":166
  *         return (ITreed._from_intervals, (intervals, self.tot))
  * 
  *     def _from_intervals(cls, intervals=None, tot=0):             # <<<<<<<<<<<<<<
  *         tree = cls(tot)
  *         if not intervals is None:
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_9_from_intervals, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed__from_intervals, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_9_from_intervals, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed__from_intervals, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__18);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_from_intervals, __pyx_t_3) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_from_intervals, __pyx_t_3) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":172
+  /* "rbi_tree/tree.pyx":173
  * 
  *         return tree
  *     _from_intervals = classmethod(_from_intervals)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __Pyx_GetNameInClass(__pyx_t_3, (PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed, __pyx_n_s_from_intervals); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __Pyx_GetNameInClass(__pyx_t_3, (PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed, __pyx_n_s_from_intervals); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_Method_ClassMethod(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Method_ClassMethod(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_from_intervals, __pyx_t_2) < 0) __PYX_ERR(0, 172, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_from_intervals, __pyx_t_2) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":175
+  /* "rbi_tree/tree.pyx":176
  * 
  * 
  *     def _insert(self, start, end, value):             # <<<<<<<<<<<<<<
  *         cdef CIntervalInt* ivl = new CIntervalInt(start, end, value)
  *         self.tree.insert(deref(ivl))
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_11_insert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed__insert, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_11_insert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed__insert, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_insert_2, __pyx_t_2) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_insert_2, __pyx_t_2) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":181
+  /* "rbi_tree/tree.pyx":182
  *                             keyval(ivl.value, ivl))
  * 
  *     def insert(self, start, end):             # <<<<<<<<<<<<<<
  *         """Insert an interval [start, end) and returns an id
  *         of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_13insert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_insert, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_13insert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_insert, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_insert, __pyx_t_2) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_insert, __pyx_t_2) < 0) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":196
+  /* "rbi_tree/tree.pyx":197
  *             return NULL
  * 
  *     def find(self, int start, int end):             # <<<<<<<<<<<<<<
  *         """Search intervals overlapping [start, end). Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_15find, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_find, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_15find, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_find, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_find, __pyx_t_2) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_find, __pyx_t_2) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":212
+  /* "rbi_tree/tree.pyx":213
  *         return a
  * 
  *     def get_ivl(self, id):             # <<<<<<<<<<<<<<
  *         """Return a list [start,end] of the interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_17get_ivl, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_get_ivl, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_17get_ivl, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_get_ivl, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_get_ivl, __pyx_t_2) < 0) __PYX_ERR(0, 212, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_get_ivl, __pyx_t_2) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":217
+  /* "rbi_tree/tree.pyx":218
  *         return [deref(ivl).low, deref(ivl).high]
  * 
  *     def find_at(self, int point):             # <<<<<<<<<<<<<<
  *         """Search for intervals containing specified point. Returns list of
  *         overlapping intervals' ids."""
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_19find_at, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_find_at, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_19find_at, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_find_at, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_find_at, __pyx_t_2) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_find_at, __pyx_t_2) < 0) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":230
+  /* "rbi_tree/tree.pyx":231
  *         return a
  * 
  *     def remove(self, int id):             # <<<<<<<<<<<<<<
  *         """Delete interval with specified id."""
  *         cdef CIntervalInt* ivl = self._get_interval(id)
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_21remove, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_remove, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_21remove, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_remove, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_remove, __pyx_t_2) < 0) __PYX_ERR(0, 230, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_remove, __pyx_t_2) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 
-  /* "rbi_tree/tree.pyx":240
+  /* "rbi_tree/tree.pyx":241
  *         del ivl
  * 
  *     def iter_ivl(self):             # <<<<<<<<<<<<<<
  *         """Iterate over all intervals. Yields tuples (start, end, id)."""
  *         cdef vector[CIntervalInt] intervals = self.tree.intervals()
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_23iter_ivl, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_iter_ivl, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8rbi_tree_4tree_6ITreed_23iter_ivl, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ITreed_iter_ivl, NULL, __pyx_n_s_rbi_tree_tree, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_iter_ivl, __pyx_t_2) < 0) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_8rbi_tree_4tree_ITreed->tp_dict, __pyx_n_s_iter_ivl, __pyx_t_2) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_8rbi_tree_4tree_ITreed);
 

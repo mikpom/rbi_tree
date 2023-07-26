@@ -79,8 +79,7 @@ cdef class ITree:
         return (ITree._from_intervals, (intervals,))
 
     def insert(self, start, end, value=None):
-        """Insert an interval [start, end) and returns an id
-        of the interval. Ids are incrementing integers, i.e. 0,1,2 etc."""
+        """Insert an interval [start, end) """
         
         cdef CIntervalObj* ivl = new CIntervalObj(
             start, end, <PyObject*>value)
@@ -140,6 +139,8 @@ cdef class ITree:
             inc(it)
 
 cdef class ITreed():
+    """Version of ITree supporting deletion
+    """
     cdef CTreeInt* tree
     cdef Ivlmap ivldata
     cdef map[int, CIntervalInt*].const_iterator datapos
